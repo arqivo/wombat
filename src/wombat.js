@@ -848,6 +848,11 @@ Wombat.prototype.retrieveWBOSRC = function(elem) {
  * @return {string}
  */
 Wombat.prototype.wrapScriptTextJsProxy = function(scriptText, excludes = []) {
+
+    if (scriptText && scriptText.indexOf('aq_no_wombat_rewrite') >= 0) {
+        return scriptText;
+    }
+
   let prefix = 
     'var _____WB$wombat$assign$function_____ = function(name) {return ' +
     '(self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };\n' +
