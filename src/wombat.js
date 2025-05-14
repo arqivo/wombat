@@ -711,6 +711,14 @@ Wombat.prototype.skipWrapScriptBasedOnType = function(scriptType) {
  * @return {boolean}
  */
 Wombat.prototype.skipWrapScriptTextBasedOnText = function(text, excludes) {
+
+    if (
+        !text ||
+        text.indexOf('aq_no_wombat_rewrite') >= 0 
+      ) {
+        return true;
+      }
+
   if (
     !text ||
     text.indexOf(this.WB_ASSIGN_FUNC) >= 0 ||
